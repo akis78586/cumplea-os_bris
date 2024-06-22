@@ -1,0 +1,128 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    background: #000; 
+    overflow: hidden;
+    font-family: 'Arial', sans-serif;
+    box-sizing: border-box;
+}
+
+.container {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2em; 
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin: 0; 
+}
+
+#birthday-message {
+    display: inline-block;
+}
+
+.balloon-container {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 5px; 
+}
+
+.balloon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px; 
+    height: 80px; 
+    background-color: var(--balloon-color);
+    color: #fff;
+    border-radius: 50%;
+    font-size: 1.5em;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    overflow: hidden; 
+    margin-bottom: 10px; 
+}
+
+.balloon::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px; 
+    height: 30px; 
+    background-color: #fff;
+    border-radius: 3px;
+    animation: sway 2s infinite alternate ease-in-out; 
+}
+
+.balloon-tail {
+    position: absolute;
+    bottom: -10px; 
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent; 
+    border-right: 5px solid transparent;
+    border-top: 10px solid #fff; 
+}
+
+@keyframes sway {
+    from {
+        transform: translateX(-2px);
+    }
+    to {
+        transform: translateX(2px);
+    }
+}
+
+.flower-border {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background-image: url('flower-border.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 5;
+}
+
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.5em;
+    }
+    .balloon-container {
+        width: 50px;
+        height: 70px;
+    }
+    .balloon {
+        width: 50px;
+        height: 60px;
+        font-size: 1.2em;
+    }
+    .balloon::after {
+        width: 5px;
+        height: 25px;
+    }
+}
